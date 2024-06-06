@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/eaa69239cc.js" crossorigin="anonymous"></script>
+    <title>PBL FRUIT MUNCHERS</title>
+    <style>
+        body {
+            margin: 0px;
+            font-family: georgia, Arial;
+            background-color: #fff1b5;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+
+        .mainnav ul {
+            font-size: 20px;
+            color: white;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        .mainnav {
+            background-color: #ffe46b;
+        }
+
+        .mainnav ul:hover {
+            color: #f5f5f5;
+        }
+
+        #products {
+            width: 80%;
+            height: 600px;
+            margin: 50px;
+            background-color: white;
+            border-radius: 20px;
+            font-family: Arial;
+            padding-top: 1px;
+            overflow: scroll;
+            padding: 15px
+        }
+
+        span {
+            color: blue;
+        }
+
+        #products div {
+            width: 340px;
+            height: 320px;
+            border-radius: 10px;
+            border: 1px solid black;
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: #e6e6e6;
+        }
+
+        #products div img {
+            border-radius: 100%;
+        }
+
+        .fa-cart-shopping {
+            color: white;
+            font-size: 18px;
+        }
+
+        #shopping-cart:hover {
+            background-color: #525252 !important;
+        }
+
+        .gb {
+            background-color: #0dde45;
+            border: none;
+            color: white;
+            width: 125px;
+            height: 30px;
+            font-family: arial;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+        .gb:hover {
+            background-color: #29ff62;
+        }
+
+        #products #counterSymbol {
+            border: none;
+            width: 10px;
+            height: 25px;
+            position: absolute;
+            background-color: red;
+            border-radius: 60%;
+            top: 140px;
+            left: 81%;
+            color: white;
+            display: none;
+            padding-top: 5px
+        }
+
+        .expandable {
+            position: relative;
+            top: -200px;
+            width: 100%;
+            background-color: #ffe46b;
+        }
+
+        @media (orientation:landscape) {
+            #products div {
+                margin-right: 50px;
+            }
+
+            #products #counterSymbol {
+                top: 350px
+            }
+
+            nav ul {
+                display: inline-block;
+            }
+
+            #barbut {
+                display: none;
+            }
+
+            #expid {
+                display: none
+            }
+
+        }
+
+        @media (orientation:portrait) {
+            #products div {
+                margin-top: 50px;
+            }
+
+            #products #counterSymbol {
+                top: 290px
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            #expid a:hover {
+                opacity: 0.8
+            }
+
+            #barbut {
+                display: block;
+            }
+
+            #expid {
+                display: block
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(90deg)
+            }
+        }
+
+        #orders {
+            width: 125px;
+            height: 300px;
+            overflow: scroll;
+            display: none;
+            background-color: white;
+        }
+
+        img {
+            margin: 20px
+        }
+
+        #btn {
+            font-size: 20px;
+            background-color: #ffb73b;
+            border-radius: 10px;
+            width: 500px
+        }
+
+        #btn span {
+            font-size: 60px;
+            color: black;
+        }
+
+        #btn div {
+            background-color: #ffd82b;
+            margin: 10px;
+            width: 200px;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px
+        }
+
+        .md {
+            background-color: #ffd82b;
+            width: 90%;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px
+        }
+
+        .md li {
+            margin: 5px
+        }
+
+        marquee {
+            background-color: orange;
+            border-radius: 10px;
+            height: 160px;
+            padding: 20px
+        }
+
+        marquee img {
+            border-radius: 100%;
+            width: 80px;
+            height: 80px;
+        }
+
+        marquee div {
+            display: inline-block;
+            background-color: #ffd82b;
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        marquee p {
+            font-size: 12px;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(90deg)
+            }
+        }
+
+        @keyframes spinL {
+            from {
+                transform: rotate(90deg)
+            }
+
+            to {
+                transform: rotate(0deg)
+            }
+        }
+
+        #orders {
+            width: 125px;
+            height: 300px;
+            overflow: scroll;
+            display: none;
+            background-color: white;
+        }
+
+        .spin {
+            animation-name: spin;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        .spinL {
+            animation-name: spinL;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        .exp {
+            animation-name: expand;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        .shr {
+            animation-name: shrink;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes expand {
+            from {
+                top: -70px;
+            }
+
+            to {
+                top: -0px;
+            }
+        }
+
+        @keyframes shrink {
+            from {
+                top: -0px;
+            }
+
+            to {
+                top: -200px;
+            }
+        }
+
+        .expandable a{
+            text-decoration:none;
+            color:white;
+            padding-left:25px;
+            font-size:18px;
+        }
+
+        @keyframes upndown{
+            0%{scale:1}
+            45%{scale:1.2}
+            55%{scale:1.2}
+            90%{scale:1}
+            100%{scale:1}
+        }
+
+        .funnybutton{
+            animation-name:upndown;
+            animation-timing-function:linear;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            color:black;
+            font-family:georgia;
+            margin-bottom:10px
+        }
+        th{
+            font-size:12px;
+        }
+
+        td{
+            margin:20px
+        }
+
+        table{
+            width:80%;
+            border-radius:10px
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="mainnav">
+        <a href="index.html">
+            <ul>
+                Home
+            </ul>
+        </a>
+        <a href="order.html">
+            <ul>
+                Order
+            </ul>
+        </a>
+        <button id="barbut" style="color:white;background-color:#ffe46b;border:1px solid #ffe46b;font-size:40px"
+            onclick="show()"><i class="fa-solid fa-bars" id="bars"></i>
+        </button>
+    </nav>
+    <div class="expandable" id="expid">
+        <a href="index.html">
+            <ul>
+                Home
+            </ul>
+        </a>
+        <a href="order.html">
+            <ul>
+                Order
+            </ul>
+        </a>
+    </div>
+    <center>
+        <img width="300" height="150" src="fm2.jpeg">
+        <h1>Full of flavour, Full of nature.</h1>
+        <h3>baked dehydrated fruit chips with an extra touch of flavour with our all-natural homemade salsas</h3>
+        <div id="btn">
+            <div><span>81.5%</span> daily vitamin C intake</div>
+            <div><span>71.3%</span> daily vitamin A intake</div>
+        </div>
+        <h3>With fruit munchers, there is no need for those fancy-pancy vitamin supplements.</h3>
+        <br><br>
+        <div class="md">
+            <h2>What's all this fuss about vitamins anyway?</h2>
+            <h4>benfits of Vitamin C</h4>
+            <ul>
+                <li>Reduces the risk of cradiovascular diseases</li>
+                <li>Lowers blood pressure</li>
+                <li>Boosts immune system (generates cells that help combat harmful bacteria)</li>
+
+            </ul>
+            <h4>benfits of Vitamin A</h4>
+            <ul>
+                <li>Preserves healthy eye vision</li>
+                <li>Reduces risk of certain cancers</li>
+                <li>Increases bone health (lowers the risk of bone fractures)</li>
+            </ul>
+        </div>
+        <div class="md">
+            <h2>Meet our chips and salsas!</h2>
+            <h4>Salsas</h4>
+            <marquee scrollmount="10">
+                <div>
+                    <img src="IMG_2792.jpeg">
+                    <p>Burnin' Chilly Nilly</p>
+                </div>
+                <div>
+                    <img src="IMG_2793.jpeg">
+                    <p>Paprika's Mild</p>
+                </div>
+                <div>
+                    <img src="IMG_2794.jpeg">
+                    <p>Happy Tamarindie's</p>
+                </div>
+            </marquee>
+            <h4>Chips</h4>
+            <marquee scrollmount="10">
+                <div>
+                    <img src="full.png">
+                    <p>Full Fruit Munchers Pack</p>
+                </div>
+                <div>
+                    <img src="mango.png">
+                    <p>Mango Munchers</p>
+                </div>
+                <div>
+                    <img src="strawberry.jpeg">
+                    <p>Strawberry Munchers</p>
+                </div>
+            </marquee>
+        </div>
+    <div class="md">
+        <h2>Why don't pack existing sauces?</h2>
+        <p>Industrial Sauces like Valentina, have certain preservative chemicals that could pontentially lead to harming the human body. Valentina sauce for example, contains a preservative called Sodium Benzoate. If you mix it with vitamin C, you generate a dangerous chemical called benzene. This chemical in the body potentially leads to causing cancer.</p><br><br>
+    <p>Since this product is high in vitamin C, we can't have these artificial salsas in our product. Instead, we provide the best alternative, our delicious homemade salsas. These will give a delicious burst of flavour to our chips.</p>
+    </div>
+    <div class="md" style="overflow-x: scroll;">
+        <h2>Is Fruit Munchers really all that better nutritionally?</h2>
+        <table bgcolor="#ffffab">
+            <tr>
+                <th>Snack</th>
+                <th>Calories</th>
+                <th>Saturated Fat</th>
+                <th>Added Sugar</th>
+                <th>Vitamin C</th>
+                <th>Vitamin A</th>
+                <th>Ingredients</th>
+            </tr>
+            <tr>
+                <td><img src="fm.jpeg" width="100" height="80"></td>
+                <td style="font-size:24px">120</td>
+                <td style="font-size:20px"><0.1g</td>
+                <td style="font-size:20px">0g</td>
+                <td style="font-size:20px">69.3mg</td>
+                <td style="font-size:20px">0.57mg </td>
+                <td style="font-size:10px">Strawberry, Mango, Banana</td>
+            </tr>
+            <tr>
+                <td>Sabritas Lemon Chips</td>
+                <td style="font-size:24px">232</td>
+                <td style="font-size:20px">6.5g</td>
+                <td style="font-size:20px">0.7g</td>
+                <td style="font-size:20px">10.5mg</td>
+                <td style="font-size:20px">no info </td>
+                <td style="font-size:10px">potato 
+                    , vegetable oil, seasoning (Maltodextrin, iodized salt, citric acid, sugar, lemon flavorings, dextrose, lactic acid, sodium inosinate, sodium guanylate)</td>
+            </tr>
+            
+        </table>
+    </div>
+    <h1>Sounded good?</h1>
+    <a href="order.html"><button class="gb funnybutton">Order Now!</button></a>
+        <br>
+        <h1></h1>
+        </center>
+    
+    <script src="script2.js">
+    </script>
+</body>
+
+</html>

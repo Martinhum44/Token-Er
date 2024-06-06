@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fff1b5;
+        }
+
+        #form {
+            background-color: white;
+            width: 80%;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        #form div {
+            margin: 20px
+        }
+    </style>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+          emailjs.init("k_trgilqEshUaAwr7");
+        })();
+        </script>
+</head>
+
+<body>
+    <center>
+        <h1>Complete your order</h1>
+        <h3 id="total">Total: </h3>
+        <div id="form">
+            <h3>Payment and Shipping</h3>
+            <div><label>Name: </label><input id="nm" required><br></div>
+            <div><label>Last Name(s): </label><input id="ln"><br></div>
+            <div><label>Email: </label><input id="em" required><br></div>
+            <div><label>Full address: </label><input id="fa" required><br></div>
+            <div><label>Credit Card number: </label><input id="cc" required></div>
+            <div><label>Expiration date: </label><input id="xd" type="date" required></div>
+            <div><label>CVV: </label><input id="cv" type="password" required></div>
+            <button onclick="submit()">Submit</button>
+        </div>
+    </center>
+    <script src="script3.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/eaa69239cc.js" crossorigin="anonymous"></script>
+    <title>PBL FRUIT MUNCHERS</title>
+    <style>
+        body {
+            margin: 0px;
+            font-family: georgia, Arial;
+            background-color: #fff1b5;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+
+        .mainnav ul {
+            font-size: 20px;
+            color: white;
+        }
+
+        nav {
+            width: 100%;
+        }
+
+        .mainnav {
+            background-color: #ffe46b;
+        }
+
+        .mainnav ul:hover {
+            color: #f5f5f5;
+        }
+
+        #products {
+            width: 80%;
+            height: 600px;
+            margin: 50px;
+            background-color: white;
+            border-radius: 20px;
+            font-family: Arial;
+            padding-top: 1px;
+            overflow: scroll;
+            padding: 15px
+        }
+
+        span {
+            color: blue;
+        }
+
+        #products div {
+            width: 340px;
+            height: 320px;
+            border-radius: 10px;
+            border: 1px solid black;
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-color: #e6e6e6;
+        }
+
+        #products div img {
+            border-radius: 100%;
+        }
+
+        .fa-cart-shopping {
+            color: white;
+            font-size: 18px;
+        }
+
+        #shopping-cart:hover {
+            background-color: #525252 !important;
+        }
+
+        .gb {
+            background-color: #0dde45;
+            border: none;
+            color: white;
+            width: 125px;
+            height: 30px;
+            font-family: arial;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+        .rb {
+            background-color: #FD2818;
+            border: none;
+            color: white;
+            width: 125px;
+            height: 30px;
+            font-family: arial;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+
+        .gb:hover {
+            background-color: #29ff62;
+        }
+
+        .rb:hover {
+            opacity: 0.8;
+        }
+
+        #products #counterSymbol {
+            border: none;
+            width: 10px;
+            height: 25px;
+            position: absolute;
+            background-color: red;
+            border-radius: 60%;
+            top: 140px;
+            left: 81%;
+            color: white;
+            display: none;
+            padding-top: 5px
+        }
+
+        @media (orientation:landscape) {
+            #products div {
+                margin-right: 50px;
+            }
+
+            #products #counterSymbol {
+                top: 210px
+            }
+
+            nav ul {
+                display: inline-block;
+            }
+
+            #barbut {
+                display: none;
+            }
+
+            #expid {
+                display: none
+            }
+
+        }
+
+        @media (orientation:portrait) {
+            #products div {
+                margin-top: 50px;
+            }
+
+            #products #counterSymbol {
+                top: 290px
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            #expid a:hover {
+                opacity: 0.8
+            }
+
+            #barbut {
+                display: block;
+            }
+
+            #expid {
+                display: block
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg)
+            }
+
+            to {
+                transform: rotate(90deg)
+            }
+        }
+
+        @keyframes spinL {
+            from {
+                transform: rotate(90deg)
+            }
+
+            to {
+                transform: rotate(0deg)
+            }
+        }
+
+        #orders {
+            display: block
+        }
+
+        .spin {
+            animation-name: spin;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        .spinL {
+            animation-name: spinL;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        .expandable {
+            position: relative;
+            top: -200px;
+            width: 100%;
+            background-color: #ffe46b;
+        }
+
+        .exp {
+            animation-name: expand;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        .shr {
+            animation-name: shrink;
+            animation-timing-function: linear;
+            animation-duration: 250ms;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes expand {
+            from {
+                top: -70px;
+            }
+
+            to {
+                top: -0px;
+            }
+        }
+
+        @keyframes shrink {
+            from {
+                top: -0px;
+            }
+
+            to {
+                top: -200px;
+            }
+        }
+
+        .expandable a {
+            text-decoration: none;
+            color: white;
+            padding-left: 25px;
+            font-size: 18px;
+        }
+
+        #orders div {
+            display: inline-block
+        }
+    </style>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+</head>
+
+<body>
+    <nav class="mainnav">
+        <a href="index.html">
+            <ul>
+                Home
+            </ul>
+        </a>
+        <a href="order.html">
+            <ul>
+                Order
+            </ul>
+        </a>
+        <button id="barbut" style="color:white;background-color:#ffe46b;border:1px solid #ffe46b;font-size:40px"
+            onclick="show()"><i class="fa-solid fa-bars" id="bars"></i></button>
+    </nav>
+    <div class="expandable" id="expid">
+        <a href="index.html">
+            <ul>
+                Home
+            </ul>
+        </a>
+        <a href="order.html">
+            <ul>
+                Order
+            </ul>
+        </a>
+    </div>
+    <center>
+        <h1>Our Products</h1>
+        <div id="products">
+            <button style="position:absolute;background-color:black;width:40px;height:40px;border-radius:60%;left:82%"
+                id="shopping-cart" onclick="showOrder()"><i class="fa-solid fa-cart-shopping"></i></button>
+            <div id="counterSymbol"></div>
+        </div>
+        <h1>Products in Cart</h1>
+        <div id="orders"
+            style="font-family:georgia;width:80%;overflow-x:scroll;background-color: white;height:300px;border-radius: 20px;margin:10px">
+        </div>
+        <button class="gb" onclick="final()">Finish Order</button>
+    </center>
+    <script src="script.js"></script>
+</body>
+
+</html>
